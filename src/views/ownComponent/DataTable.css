@@ -1,0 +1,35 @@
+/* DataTable.css */
+.data-table-container {
+  position: relative;
+  padding: 20px;
+  background: white;
+  margin-bottom: 10px;
+}
+
+.data-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.search-box-container {
+  position: relative;
+  width: 300px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table-responsive {
+  min-width: 100%;
+  width: max-content;
+}
