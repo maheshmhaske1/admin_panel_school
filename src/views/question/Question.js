@@ -278,7 +278,7 @@ function Question() {
             event.preventDefault();
             event.stopPropagation();
             const form = formRef.current;
-
+        
             if (form.checkValidity() === false) {
                 form.classList.add("was-validated");
                 if (formData.is_type == "" || formData.is_type == null) {
@@ -287,7 +287,7 @@ function Question() {
                 }
                 return;
             }
-
+        
             // Check if a correct option is selected
             if (correctOptionIndex === null) {
                 toast.error("Please select the correct answer option", {
@@ -296,37 +296,37 @@ function Question() {
                 });
                 return;
             }
-
+        
             // Set the is_true field for the correct option
             const updatedOptions = options.map((opt, index) => ({
                 ...opt,
                 is_true: index === correctOptionIndex,
             }));
-
+        
             formData.is_final = isFinal;
             // imgUpload
             formData.img_url = imageUrl
             setOptions(updatedOptions);
-
+        
             console.log("updatedOptions", updatedOptions)
             console.log("formData", formData)
             // return
             let response = null;
-
+        
             if (editId) {
                 response = await editQuestion(editId, { ...formData, options: updatedOptions });
             } else {
                 response = await addQuestion({ ...formData, options: updatedOptions });
                 setEditId(null);
             }
-
+        
             if (response.success) {
                 toast.success(response.message, {
                     position: toast.POSITION.TOP_RIGHT,
                     autoClose: 3000,
                 });
                 renderData();
-
+        
                 setBtnText("Add Question");
                 setFormData({
                     question: "",
@@ -341,11 +341,11 @@ function Question() {
                 });
                 //imgUpload
                 setImageUrl('');
-
+        
                 setOptions([]); // Clear options state
                 setCorrectOptionIndex(null); // Reset correctOptionIndex
                 setIsFinal(false);
-
+        
                 form.classList.remove("was-validated");
             } else {
                 toast.error(response.message, {
@@ -354,6 +354,7 @@ function Question() {
                 });
             }
         };
+        
 
         return (
             <CForm

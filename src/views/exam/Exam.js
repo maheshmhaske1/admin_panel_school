@@ -60,11 +60,10 @@ function Exam(props) {
     const [formData, setFormData] = useState({
         exam_name: "",
         total_marks: "",
-        organization_id: "",
         level_id: "",
         created_by: created_by,
         organization_value: null,
-        organization_id: null,
+        organization_id: props.id ? props.id : null,
         level_value: null,
         level_id: null,
         examDateTime: null,
@@ -96,6 +95,8 @@ function Exam(props) {
 
             renderTeacherData(props.id)
             setIsTeacherDisabled(false)
+
+
         } else {
             const response = await renderExamData();
             if (response.success) {
@@ -348,7 +349,7 @@ function Exam(props) {
             accessor: "_id", // Assuming you have an 'id' property in your teacher data
             Cell: ({ row }) =>
             // (
-           
+
             {
                 // const startDate = new Date(row.original.examDateTime);
                 // const endDate = new Date(row.original.examEndDateTime);
@@ -407,7 +408,7 @@ function Exam(props) {
                 // </>
                 // }
 
-                const is_schedule= row.original.is_schedule
+                const is_schedule = row.original.is_schedule
                 if (is_schedule) {
                     return <>
                         <CButton
@@ -429,7 +430,7 @@ function Exam(props) {
                         </CButton>
                     </>
                 } else {
-                         return <>
+                    return <>
                         <CButton
                             color="success"
                             size="sm"
@@ -556,8 +557,9 @@ function Exam(props) {
                 }
                 return;
             }
-            formData.examDateTime = formData.examDateTime.toISOString();
-            formData.examEndDateTime = formData.examEndDateTime.toISOString();
+            // Convert examDateTime and examEndDateTime to Date objects
+            formData.examDateTime = new Date(formData.examDateTime).toISOString();
+            formData.examEndDateTime = new Date(formData.examEndDateTime).toISOString();
 
 
             let response = null;
