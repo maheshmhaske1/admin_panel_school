@@ -79,3 +79,18 @@
 .data-table-container{
   height: 100%;
 }
+
+
+
+/* responsive css */
+
+@media (max-width: 768px) {
+  
+  .body{
+    padding: 0px !important;
+  }
+
+  .modal-content{
+    width: -webkit-fill-available !important;
+  }
+}

@@ -1,7 +1,9 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-const BASE_URL = 'http://localhost:5000'
+// const BASE_URL = 'http://localhost:5000'
+const BASE_URL = 'https://backend-school-6sbi.onrender.com'
+
 
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -385,6 +387,16 @@ export const editExam = async (id, data) => {
 export const renderExamDataByOrganization = async (id) => {
   try {
     const response = await axiosInstance.get(`${BASE_URL}/exam/by-organization-id/${id}`)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+//renderExamDataByOrganizationForAdmin
+export const renderExamDataByOrganizationForAdmin = async (id) => {
+  try {
+    const response = await axiosInstance.get(`${BASE_URL}/exam/by-organization-id-for-admin/${id}`)
     return response.data
   } catch (error) {
     throw error

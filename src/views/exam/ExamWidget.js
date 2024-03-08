@@ -42,7 +42,7 @@ const ExamWidget = (prop) => {
     return (
         <CRow>
             <CCardGroup className="mb-4">
-                <CCol md={3}>
+                <CCol md={3}  className='mt-md-0 mt-2'>
                     <CWidgetStatsC
                         icon={<CIcon icon={cilSpeech} height={36} />}
                         value={prop.data[0]?.exam_name}
@@ -51,7 +51,7 @@ const ExamWidget = (prop) => {
                     />
                 </CCol>
 
-                <CCol md={3}>
+                <CCol md={3} className='mt-md-0 mt-2'>
                     <CWidgetStatsC
                         icon={<CIcon icon={cilUserFollow} height={36} />}
                         value={prop.data[0]?.organization_id.name}
@@ -59,7 +59,7 @@ const ExamWidget = (prop) => {
                     // progress={{ color: 'success', value: 75 }}
                     />
                 </CCol>
-                <CCol md={3}>
+                <CCol md={3} className='mt-md-0 mt-2'>
                     <CWidgetStatsC
                         icon={<CIcon icon={cilBasket} height={36} />}
                         value={prop.data[0]?.level_id.name}
@@ -67,7 +67,7 @@ const ExamWidget = (prop) => {
                     // progress={{ color: 'warning', value: 75 }}
                     />
                 </CCol>
-                <CCol md={3}>
+                <CCol md={3} className='mt-md-0 mt-2'>
                     <CWidgetStatsC
                         icon={<CIcon icon={cilChartPie} height={36} />}
                         value={prop.data[0]?.teacher_id.name}
@@ -75,7 +75,7 @@ const ExamWidget = (prop) => {
                     // progress={{ color: 'primary', value: 75 }}
                     />
                 </CCol>
-                <CCol md={3}>
+                <CCol md={3} className='mt-md-0 mt-2'>
                     <CWidgetStatsC
                         icon={<CIcon icon={cilClock} height={36} />}
                         value={convertDate(prop.data[0]?.examDateTime)}
@@ -83,7 +83,7 @@ const ExamWidget = (prop) => {
                     // progress={{ color: 'danger', value: 75 }}
                     />
                 </CCol>
-                <CCol md={3}>
+                <CCol md={3} className='mt-md-0 mt-2'>
                     <CWidgetStatsC
                         icon={<CIcon icon={cilClock} height={36} />}
                         value={convertDate(prop.data[0]?.examEndDateTime)}
@@ -92,7 +92,7 @@ const ExamWidget = (prop) => {
                     />
                 </CCol>
 
-                <CCol md={3}>
+                <CCol md={3} className='mt-md-0 mt-2'>
                     <CWidgetStatsC
                         icon={<CIcon icon={cilAvTimer} height={36} />}
                         value={prop.data[0]?.exam_duration}
@@ -100,7 +100,7 @@ const ExamWidget = (prop) => {
 
                     />
                 </CCol>
-                <CCol md={3}>
+                <CCol md={3} className='mt-md-0 mt-2'>
                     <CWidgetStatsC
                         icon={<CIcon icon={cilCenterFocus} height={36} />}
                         value={prop.data[0]?.total_marks}

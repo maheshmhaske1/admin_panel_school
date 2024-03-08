@@ -20,7 +20,8 @@ import {
     renderExamData,
     renderLevelData,
     renderTeacherByOrganization,
-    renderExamDataByOrganization
+    renderExamDataByOrganization,
+    renderExamDataByOrganizationForAdmin
 } from "src/utility/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -88,7 +89,7 @@ function Exam(props) {
     const renderData = async () => {
 
         if (props.id) {
-            const response = await renderExamDataByOrganization(props.id);
+            const response = await renderExamDataByOrganizationForAdmin(props.id);
             if (response.success) {
                 setData(response.data);
             }

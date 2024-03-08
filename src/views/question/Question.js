@@ -40,7 +40,7 @@ function Question() {
     const [correctOptionIndex, setCorrectOptionIndex] = useState(null);
     const [isFinal, setIsFinal] = useState(false);
     const [isBulk, setIsBulk] = useState(false);
-   
+
 
     //imgUpload
     const [imageUrl, setImageUrl] = useState('');
@@ -278,7 +278,7 @@ function Question() {
             event.preventDefault();
             event.stopPropagation();
             const form = formRef.current;
-        
+
             if (form.checkValidity() === false) {
                 form.classList.add("was-validated");
                 if (formData.is_type == "" || formData.is_type == null) {
@@ -287,7 +287,7 @@ function Question() {
                 }
                 return;
             }
-        
+
             // Check if a correct option is selected
             if (correctOptionIndex === null) {
                 toast.error("Please select the correct answer option", {
@@ -296,37 +296,37 @@ function Question() {
                 });
                 return;
             }
-        
+
             // Set the is_true field for the correct option
             const updatedOptions = options.map((opt, index) => ({
                 ...opt,
                 is_true: index === correctOptionIndex,
             }));
-        
+
             formData.is_final = isFinal;
             // imgUpload
             formData.img_url = imageUrl
             setOptions(updatedOptions);
-        
+
             console.log("updatedOptions", updatedOptions)
             console.log("formData", formData)
             // return
             let response = null;
-        
+
             if (editId) {
                 response = await editQuestion(editId, { ...formData, options: updatedOptions });
             } else {
                 response = await addQuestion({ ...formData, options: updatedOptions });
                 setEditId(null);
             }
-        
+
             if (response.success) {
                 toast.success(response.message, {
                     position: toast.POSITION.TOP_RIGHT,
                     autoClose: 3000,
                 });
                 renderData();
-        
+
                 setBtnText("Add Question");
                 setFormData({
                     question: "",
@@ -341,11 +341,11 @@ function Question() {
                 });
                 //imgUpload
                 setImageUrl('');
-        
+
                 setOptions([]); // Clear options state
                 setCorrectOptionIndex(null); // Reset correctOptionIndex
                 setIsFinal(false);
-        
+
                 form.classList.remove("was-validated");
             } else {
                 toast.error(response.message, {
@@ -354,7 +354,7 @@ function Question() {
                 });
             }
         };
-        
+
 
         return (
             <CForm
@@ -419,6 +419,8 @@ function Question() {
 
                 {options.map((option, index) => (
                     <React.Fragment key={index}>
+                        <CCol md={12}> <hr style={{margin: "0px"}}></hr></CCol>
+
                         <CCol md={7}>
                             <CFormLabel>{`Option ${index + 1}`}</CFormLabel>
                             <CFormInput
@@ -429,7 +431,7 @@ function Question() {
                                 onChange={(e) => handleOptionChange(index, "name", e.target.value)}
                             />
                         </CCol>
-                        <CCol md={2} className="mt-5">
+                        <CCol md={2} className="mt-md-5">
                             <CFormLabel className="mx-2">Is Correct?</CFormLabel>
                             <CFormCheck
                                 type="checkbox"
@@ -438,7 +440,7 @@ function Question() {
                                 onChange={() => handleSetCorrectOption(index)}
                             />
                         </CCol>
-                        <CCol md={3} className="mt-5">
+                        <CCol md={3} className="mt-md-5">
                             <CButton
                                 color="danger"
                                 style={{ color: "white" }}
@@ -447,6 +449,7 @@ function Question() {
                                 Remove
                             </CButton>
                         </CCol>
+
                     </React.Fragment>
                 ))}
 
@@ -463,14 +466,14 @@ function Question() {
         <>
             <div className="row my-2">
                 <div className="col-12 text-end" >
-                <CButton color="primary" type="submit" onClick={() => setIsBulk(true)}>
-                     <FaPlus></FaPlus> Bulk Upload
+                    <CButton color="primary" type="submit" onClick={() => setIsBulk(true)}>
+                        <FaPlus></FaPlus> Bulk Upload
                     </CButton>
                 </div>
             </div>
             <FormsCustom customStyles={CustomStyles} title={`Question Master (${LevelName})`} />
-            {isBulk?<ExcelUploadComponent created_by={created_by} id={id} isBulk={isBulk}   updateIsBulkState={updateIsBulkState} renderData={renderData} />:""}
-            
+            {isBulk ? <ExcelUploadComponent created_by={created_by} id={id} isBulk={isBulk} updateIsBulkState={updateIsBulkState} renderData={renderData} /> : ""}
+
             <DataTable columns={columns} data={data} />
         </>
     );

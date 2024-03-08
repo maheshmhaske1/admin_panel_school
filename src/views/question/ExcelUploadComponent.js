@@ -135,12 +135,12 @@ const ExcelUploadComponent = ({ created_by, id, isBulk, updateIsBulkState, rende
         </Modal.Header>
         <Modal.Body>
           <div className='row'>
-            <div className='col-8'>
+            <div className='col-md-8'>
               <CFormLabel htmlFor="exampleFormControlInput1">Bulk Upload</CFormLabel>
               <CFormInput type="file" aria-label="file example" onChange={handleFileUpload} />
             </div>
-            <div className='col-4 mt-3'>
-              <Button variant="primary" onClick={handleSubmit} className='w-100 mt-3'>
+            <div className='col-md-4 mt-md-3 mt-0'>
+              <Button variant="primary" onClick={handleSubmit} className='w-100 mt-3 bulk_upload_btn'>
                 <FaFile></FaFile> Upload Data
               </Button>
             </div>

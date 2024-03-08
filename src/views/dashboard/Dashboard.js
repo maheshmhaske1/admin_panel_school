@@ -13,6 +13,7 @@ import {
 import { renderDataForDashboard } from 'src/utility/api';
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom'
 
 
 const Dashboard = () => {
@@ -24,6 +25,8 @@ const Dashboard = () => {
   const [studentData, setStudentData] = useState([])
   const [teacherData, setTeacherData] = useState([])
 
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     renderData()
@@ -229,10 +232,10 @@ const Dashboard = () => {
       <br></br>
       <DataTable columns={columnsOrg} data={organizationData} name="Recent Organization" />
       <div className='row my-4'>
-        <div className='col-6'>
+        <div className='col-md-6'>
           <DataTable columns={teacherColumns} data={teacherData} name="Recent Teacher" />
         </div>
-        <div className='col-6'>
+        <div className='col-md-6 mt-md-0 mt-4'>
           <DataTable columns={studentColumns} data={studentData} name="Recent Student" />
 
         </div>

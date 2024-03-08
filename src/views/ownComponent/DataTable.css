@@ -33,3 +33,19 @@
   min-width: 100%;
   width: max-content;
 }
+
+
+/* responsive css */
+@media (max-width: 768px) {
+  .search-box-container{
+    width: auto;
+  }
+  .download_excel{
+    font-size: 14px;
+    padding: 10px;
+  }
+  .data-table-container {
+    padding: 11px;
+    font-size: medium;
+  }
+}

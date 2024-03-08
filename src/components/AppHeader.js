@@ -29,7 +29,8 @@ const AppHeader = () => {
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
         <CHeaderBrand className="mx-auto d-md-none" to="/">
-          <CIcon icon={logo} height={48} alt="Logo" />
+          {/* <CIcon icon={logo} height={48} alt="Logo" /> */}
+          <h2>Logo Image</h2>
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
@@ -38,13 +39,22 @@ const AppHeader = () => {
             </CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
+            <CNavLink to="/level" component={NavLink}>Level Master</CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">Settings</CNavLink>
+            <CNavLink to='/organization' component={NavLink}>Organization Master</CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink to='/teacher' component={NavLink}>Teacher Master</CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink to='/student' component={NavLink}>Student Master</CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink to='/examination' component={NavLink}>Examination Master</CNavLink>
           </CNavItem>
         </CHeaderNav>
-        <CHeaderNav>
+        {/* <CHeaderNav>
           <CNavItem>
             <CNavLink href="#">
               <CIcon icon={cilBell} size="lg" />
@@ -60,7 +70,7 @@ const AppHeader = () => {
               <CIcon icon={cilEnvelopeOpen} size="lg" />
             </CNavLink>
           </CNavItem>
-        </CHeaderNav>
+        </CHeaderNav> */}
         <CHeaderNav className="ms-3">
           <AppHeaderDropdown />
         </CHeaderNav>
