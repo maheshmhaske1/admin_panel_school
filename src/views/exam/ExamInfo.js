@@ -23,14 +23,6 @@ import CertificateGenerator from './CertificateGenerator';
 import CertificatePDFGenerator from './CertificatePDFGenerator';
 import certificate from "src/assets/own_img/certificate.jpeg"
 
-
-
-
-
-
-
-
-
 function ExamInfo() {
   const { id } = useParams();
 

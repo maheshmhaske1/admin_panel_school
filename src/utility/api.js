@@ -2,7 +2,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 
 // const BASE_URL = 'http://localhost:5000'
-const BASE_URL = 'https://backend-school-6sbi.onrender.com'
+const BASE_URL = 'http://66.179.250.128:5000'
 
 
 export const axiosInstance = axios.create({
